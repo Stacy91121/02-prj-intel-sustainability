@@ -1,1 +1,194 @@
 /* Add your CSS here */
+
+/* Set default font for the whole page to Open Sans */
+body {
+  font-family: 'Open Sans', Arial, sans-serif;
+}
+
+/* Use Roboto for all headings (h1, h2, h3) */
+h1, h2, h3 {
+  font-family: 'Roboto', Arial, sans-serif;
+}
+
+/* Make all images responsive and visible */
+img {
+  /* Makes the image take up the full width of its container, but not more than 300px */
+  width: 100%;
+  max-width: 300px;
+  /* Adds space below each image */
+  margin-bottom: 10px;
+  /* Adds a simple border to help images stand out */
+  border: 2px solid #ccc;
+  /* Rounds the corners a little */
+  border-radius: 8px;
+  /* Adds a little shadow for visibility */
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+  /* Display block removes small gaps below images */
+  display: block;
+}
+
+/* Add spacing around each card (each div inside section) */
+section > div {
+  /* Adds space around each card */
+  margin: 20px 0;
+  /* Adds padding inside each card */
+  padding: 16px;
+  /* Adds a light background color */
+  background-color: #f9f9f9;
+  /* Rounds the corners */
+  border-radius: 10px;
+  /* Adds a little shadow */
+  box-shadow: 1px 1px 6px rgba(0,0,0,0.05);
+}
+
+/* Center the header content */
+header div {
+  text-align: center;
+}
+
+/* Optional: Center the timeline section */
+section {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Add a blue gradient background to the header */
+header {
+  /* Linear gradient from left (light blue) to right (darker blue) */
+  background: linear-gradient(to right, #93c6fa, #1976d2);
+  /* Add some padding for spacing */
+  padding: 40px 0 0 0;
+  color: #fff; /* Set text color to white */
+  transition: padding 0.3s, font-size 0.3s;
+}
+
+/* Center the Intel logo and remove its border */
+header img[alt="Intel Logo"] {
+  display: block;           /* Make the logo a block element */
+  margin-left: auto;        /* Center horizontally */
+  margin-right: auto;
+  border: none;             /* Remove border */
+  box-shadow: none;         /* Remove shadow */
+  max-width: 120px;         /* Optional: make the logo a bit smaller */
+  margin-bottom: 16px;      /* Space below the logo */
+}
+
+/* Shrink the header/hero section when scrolling down */
+body.scrolled header {
+  padding: 10px 0 0 0; /* Less top padding */
+}
+
+body.scrolled header img[alt="Intel Logo"] {
+  max-width: 70px;      /* Make the logo smaller */
+  margin-bottom: 8px;   /* Less space below logo */
+}
+
+body.scrolled header h1 {
+  font-size: 1.5em;     /* Make the main heading smaller */
+}
+
+body.scrolled header p {
+  font-size: 1em;       /* Make the subheading smaller */
+}
+
+/* Simple light blue line divider under h1 in the header */
+.header-divider {
+  width: 60px;
+  height: 4px;
+  background: #b3d8fd; /* Light blue color */
+  margin: 16px auto;   /* Space above and below, centered */
+  border: none;
+  border-radius: 2px;
+}
+
+/* Timeline cards container: horizontal flexbox with invisible scrolling */
+.timeline-cards {
+  display: flex;           /* Arrange cards in a row */
+  flex-direction: row;     /* Horizontal direction */
+  gap: 20px;               /* Space between cards */
+  overflow-x: auto;        /* Enable horizontal scrolling */
+  width: 100%;             /* Take full width of container */
+  max-width: 100%;
+  margin: 0;
+  padding-bottom: 10px;    /* Space for scrollbar (even if hidden) */
+  scroll-behavior: smooth; /* Smooth scrolling */
+}
+
+/* Hide the horizontal scrollbar (Webkit browsers like Chrome, Safari) */
+.timeline-cards::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for Firefox */
+.timeline-cards {
+  scrollbar-width: none;
+}
+
+/* Each card: set a fixed width for horizontal layout */
+.timeline-cards > div {
+  min-width: 260px;
+  max-width: 300px;
+  flex: 0 0 300px;         /* Each card is 300px wide, does not shrink or grow */
+  overflow: hidden;
+  position: relative;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-sizing: border-box;
+  text-align: center;
+  margin-bottom: 0;        /* Remove bottom margin for horizontal layout */
+}
+
+/* When a user hovers over a card, slightly enlarge it and add a stronger shadow */
+.timeline-cards > div:hover {
+  transform: scale(1.05); /* Slightly enlarge the card */
+  box-shadow: 4px 4px 16px rgba(0,0,0,0.15); /* Stronger shadow on hover */
+  z-index: 1; /* Make sure the hovered card appears above others */
+}
+
+/* Make all images in timeline cards smaller in width */
+.timeline-cards img {
+  width: 90%;         /* Image is now 90% of the card width */
+  height: 120px;      /* Keep the same height */
+  object-fit: cover;
+  max-width: 270px;   /* 90% of 300px max card width */
+  margin-bottom: 10px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+  display: block;
+  overflow: hidden;
+  margin-left: auto;  /* Center the image horizontally */
+  margin-right: auto;
+}
+
+/* Prevent text from overflowing the card */
+.timeline-cards > div p,
+.timeline-cards > div h2,
+.timeline-cards > div h3 {
+  word-break: break-word;
+  overflow-wrap: break-word;
+  margin: 0 0 10px 0;
+  /* Prevent text from overflowing horizontally */
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Responsive: Stack timeline cards vertically and prevent overflow on small screens */
+@media (max-width: 800px) {
+  .timeline-cards {
+    flex-direction: column;
+    gap: 20px;
+    overflow-x: visible;
+    width: 100%;
+  }
+  .timeline-cards > div {
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
+  }
+  .timeline-cards img {
+    max-width: 100%;
+    height: auto;
+    overflow: hidden;
+  }
+}
