@@ -3,6 +3,9 @@
 /* Set default font for the whole page to Open Sans */
 body {
   font-family: 'Open Sans', Arial, sans-serif;
+  margin: 0;
+  padding: 0; /* Remove extra white space around the body */
+  overflow-x: hidden; /* Prevents horizontal scroll bar and content bleed */
 }
 
 /* Use Roboto for all headings (h1, h2, h3) */
@@ -60,6 +63,7 @@ header {
   padding: 40px 0 0 0;
   color: #fff; /* Set text color to white */
   transition: padding 0.3s, font-size 0.3s;
+  padding-bottom: .5%; /* Add some space at the bottom */
 }
 
 /* Center the Intel logo and remove its border */
@@ -101,41 +105,75 @@ body.scrolled header p {
   border-radius: 2px;
 }
 
-/* Timeline cards container: horizontal flexbox with invisible scrolling */
+/* Add space between the header/hero paragraph and the timeline cards section */
+header p {
+  margin-bottom: 50px; /* Adds space below the paragraph in the header */
+}
+
+/* Timeline cards container: center it, show 4 cards at a time, and prevent content from bleeding off the page */
 .timeline-cards {
-  display: flex;           /* Arrange cards in a row */
-  flex-direction: row;     /* Horizontal direction */
-  gap: 20px;               /* Space between cards */
-  overflow-x: auto;        /* Enable horizontal scrolling */
-  width: 100%;             /* Take full width of container */
-  max-width: 100%;
-  margin: 0;
-  padding-bottom: 10px;    /* Space for scrollbar (even if hidden) */
-  scroll-behavior: smooth; /* Smooth scrolling */
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  overflow-x: auto;
+  width: 100%;
+  max-width: 1260px;        /* 4 cards * 300px + 3 gaps * 20px = 1260px */
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 10px;
+  scroll-behavior: smooth;
+  scroll-behavior: hide
+  justify-content: flex-start;
+  align-items: stretch;
+  box-sizing: border-box;
 }
 
-/* Hide the horizontal scrollbar (Webkit browsers like Chrome, Safari) */
+/* Hide the horizontal scrollbar by default, show it only on hover */
 .timeline-cards::-webkit-scrollbar {
-  display: none;
+  height: 10px;
+  background: transparent;
+  transition: background 0.3s;
+  opacity: 0;
+  pointer-events: none;
 }
 
-/* Hide scrollbar for Firefox */
+.timeline-cards:hover::-webkit-scrollbar {
+  background: #e0e0e0;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.timeline-cards::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.timeline-cards:hover::-webkit-scrollbar-thumb {
+  background: #1976d2; /* Dark blue for the thumb */
+}
+
+/* Firefox: hide scrollbar by default, show on hover */
 .timeline-cards {
   scrollbar-width: none;
+}
+.timeline-cards:hover {
+  scrollbar-width: thin;
+  scrollbar-color: #1976d2 #e0e0e0;
 }
 
 /* Each card: set a fixed width for horizontal layout */
 .timeline-cards > div {
-  min-width: 260px;
+  min-width: 300px;
   max-width: 300px;
   flex: 0 0 300px;         /* Each card is 300px wide, does not shrink or grow */
   overflow: hidden;
-  position: relative;
+  position: relative; /* Needed for absolute positioning of the paragraph */
   border-radius: 10px;
   background-color: #f9f9f9;
   box-sizing: border-box;
   text-align: center;
-  margin-bottom: 0;        /* Remove bottom margin for horizontal layout */
+  margin-bottom: 0;
 }
 
 /* When a user hovers over a card, slightly enlarge it and add a stronger shadow */
@@ -143,6 +181,11 @@ body.scrolled header p {
   transform: scale(1.05); /* Slightly enlarge the card */
   box-shadow: 4px 4px 16px rgba(0,0,0,0.15); /* Stronger shadow on hover */
   z-index: 1; /* Make sure the hovered card appears above others */
+}
+
+/* Make each year (h2) in each card the same dark blue as the gradient */
+.timeline-cards > div h2 {
+  color: #1976d2; /* Dark blue from the gradient */
 }
 
 /* Make all images in timeline cards smaller in width */
@@ -161,6 +204,46 @@ body.scrolled header p {
   margin-right: auto;
 }
 
+/* Hide the card description by default and position it over the image */
+.timeline-cards > div p {
+  display: none;           /* Hide paragraph by default */
+  transition: opacity 0.2s;
+  opacity: 0;
+  position: absolute;      /* Position over the image */
+  top: 60px;               /* Adjust to cover the image area */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;              /* Match image width */
+  z-index: 2;
+  pointer-events: none;    /* Prevent mouse events on the paragraph itself */
+}
+
+/* Show the card description on hover, with the same blue gradient as the header */
+.timeline-cards > div:hover p {
+  display: block;
+  opacity: 1;
+  background: linear-gradient(to right, #1976d2, #93c6fa); /* Same blue gradient, reversed */
+  color: #fff;
+  padding: 10px;
+  border-radius: 6px;
+  margin-top: 0;
+  pointer-events: auto;
+}
+
+/* Move the hover description lower for cards 2, 3, and 4 */
+.timeline-cards > div:nth-child(6) p {
+  height: 130px;          /* Shrink to cover image and some space below */
+}
+.timeline-cards > div:nth-child(2) p,
+.timeline-cards > div:nth-child(3) p,
+.timeline-cards > div:nth-child(4) p {
+  top: 70px; /* Move the hover box further down for these cards */
+    height: 120px;          /* Expand to cover image and some space below */
+
+
+
+}
+
 /* Prevent text from overflowing the card */
 .timeline-cards > div p,
 .timeline-cards > div h2,
@@ -173,13 +256,25 @@ body.scrolled header p {
   box-sizing: border-box;
 }
 
+/* Center the footer or page info text at the bottom */
+body > p {
+  text-align: center;
+}
+
 /* Responsive: Stack timeline cards vertically and prevent overflow on small screens */
+@media (max-width: 1300px) {
+  .timeline-cards {
+    width: 100%;
+    max-width: 100%;
+  }
+}
 @media (max-width: 800px) {
   .timeline-cards {
     flex-direction: column;
     gap: 20px;
     overflow-x: visible;
     width: 100%;
+    max-width: 100%;
   }
   .timeline-cards > div {
     min-width: 0;
@@ -191,4 +286,14 @@ body.scrolled header p {
     height: auto;
     overflow: hidden;
   }
+}
+
+/* Make the font in timeline card 5 (Peak GHG Emissions) smaller */
+.timeline-cards > div:nth-child(5) p {
+  font-size: 0.9em;    /* Smaller font size for this card's description */
+}
+
+/* Make the font in timeline card 6 (RISE Strategy) smaller */
+.timeline-cards > div:nth-child(6) p {
+  font-size: 0.9em;    /* Smaller font size for this card's description */
 }
