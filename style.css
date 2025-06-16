@@ -110,7 +110,7 @@ header p {
   margin-bottom: 50px; /* Adds space below the paragraph in the header */
 }
 
-/* Timeline cards container: center it, show 4 cards at a time, and prevent content from bleeding off the page */
+/* Timeline cards container: enable scroll snap for smooth navigation */
 .timeline-cards {
   display: flex;
   flex-direction: row;
@@ -121,8 +121,8 @@ header p {
   margin-left: auto;
   margin-right: auto;
   padding-bottom: 10px;
-  scroll-behavior: smooth;
-  scroll-behavior: hide
+  scroll-behavior: smooth;         /* Smooth scrolling */
+  scroll-snap-type: x mandatory;   /* Enable horizontal scroll snap */
   justify-content: flex-start;
   align-items: stretch;
   box-sizing: border-box;
@@ -174,13 +174,17 @@ header p {
   box-sizing: border-box;
   text-align: center;
   margin-bottom: 0;
+  scroll-snap-align: start;        /* Snap each card to the start of the container */
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 /* When a user hovers over a card, slightly enlarge it and add a stronger shadow */
 .timeline-cards > div:hover {
-  transform: scale(1.05); /* Slightly enlarge the card */
-  box-shadow: 4px 4px 16px rgba(0,0,0,0.15); /* Stronger shadow on hover */
-  z-index: 1; /* Make sure the hovered card appears above others */
+  transform: translateY(-8px) scale(1.03); /* Slightly lift and enlarge the card */
+  box-shadow: 0 8px 24px #1976d2;
+  z-index: 1;
 }
 
 /* Make each year (h2) in each card the same dark blue as the gradient */
