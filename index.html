@@ -156,21 +156,29 @@
       <!-- First column -->
       <div class="col-12 col-md-4 text-center mb-4">
         <!-- Add an icon before the heading text -->
-        <h2><i class="bi bi-lightbulb"></i> Column 1</h2>
-        <p>This is the first column. You can add any content here.</p>
+        <h2><i class="bi bi-lightbulb"></i>RISE Strategy</h2>
+        <p>Under its RISE (Responsible, Inclusive, Sustainable, Enabling) strategy, 
+          Intel sets ambitious 2030 goals, including driving industry-wide 
+          progress on climate action, water stewardship, and waste reduction.</p>
         <!-- Consistently styled Bootstrap button -->
         <a href="#" class="btn btn-primary">Learn More</a>
       </div>
       <!-- Second column -->
       <div class="col-12 col-md-4 text-center mb-4">
-        <h2><i class="bi bi-cpu"></i> Column 2</h2>
-        <p>This is the second column. It will stack below the first on small screens.</p>
+        <h2><i class="bi bi-cpu"></i>Commitment</h2>
+        <p>In 2022, Intel pledged to achieve net-zero greenhouse gas emissions 
+          (Scope 1 and 2) by 2040. This commitment builds on decades of 
+          environmental initiatives and partnerships across the semiconductor 
+          industry.</p>
         <a href="#" class="btn btn-primary">Learn More</a>
       </div>
       <!-- Third column -->
       <div class="col-12 col-md-4 text-center mb-4">
-        <h2><i class="bi bi-globe"></i> Column 3</h2>
-        <p>This is the third column. All columns are equal width on larger screens.</p>
+        <h2><i class="bi bi-globe"></i> Water &amp; Waste</h2>
+        <p>Intel conserves billions of gallons of water annually and 
+          collaborates with local communities to restore watersheds.
+          Intel also upcycles and recycles materials to reduce waste and 
+          advance a circular economy.</p>
         <a href="#" class="btn btn-primary">Learn More</a>
       </div>
     </div>
@@ -191,6 +199,53 @@
         <button type="submit" class="btn btn-primary w-100">Subscribe</button>
       </div>
     </form>
+  </section>
+
+  <!-- Bootstrap Accordion: Interactive Q&A about Sustainability -->
+  <!-- This accordion lets users expand to read more information -->
+  <section class="container my-5">
+    <h2 class="text-center mb-4">Frequently Asked Questions</h2>
+    <div class="accordion" id="sustainabilityAccordion">
+      <!-- Accordion Item 1 -->
+      <div class="accordion-item">
+        <h3 class="accordion-header" id="headingOne">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            What is Intel doing to reduce its environmental impact?
+          </button>
+        </h3>
+        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#sustainabilityAccordion">
+          <div class="accordion-body">
+            Intel invests in renewable energy, water conservation, and waste reduction to minimize its environmental footprint and help build a more sustainable future.
+          </div>
+        </div>
+      </div>
+      <!-- Accordion Item 2 -->
+      <div class="accordion-item">
+        <h3 class="accordion-header" id="headingTwo">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            How can I learn more about Intel’s sustainability goals?
+          </button>
+        </h3>
+        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#sustainabilityAccordion">
+          <div class="accordion-body">
+            Visit Intel’s official website or subscribe to our newsletter below for updates on our latest sustainability initiatives and progress.
+          </div>
+        </div>
+      </div>
+      <!-- Accordion Item 3 -->
+      <div class="accordion-item">
+        <h3 class="accordion-header" id="headingThree">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            What can I do to support sustainability?
+          </button>
+        </h3>
+        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#sustainabilityAccordion">
+          <div class="accordion-body">
+            You can reduce energy use, recycle electronics, and support companies with strong environmental commitments like Intel.
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- Footer Section -->
@@ -232,6 +287,8 @@
     const observer = new MutationObserver(updateDirection);
     observer.observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
   </script>
+  <!-- Add Bootstrap JS for interactive components -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 </body>
 </html>
 

@@ -214,12 +214,22 @@ header p {
   transition: opacity 0.2s;
   opacity: 0;
   position: absolute;      /* Position over the image */
-  top: 60px;               /* Adjust to cover the image area */
+  top: 90px; /* Move the pop-up box further down */
   left: 50%;
   transform: translateX(-50%);
   width: 90%;              /* Match image width */
   z-index: 2;
   pointer-events: none;    /* Prevent mouse events on the paragraph itself */
+  font-size: 0.9em; /* Smaller font size for pop-up description */
+}
+
+.timeline-cards > div:nth-child(9) p {
+  font-size: 0.8em; /* Smaller font size for these specific cards */
+}
+
+.timeline-cards > div:nth-child(5) p {
+height: 120px; /* Make the paragraph box taller for this card */
+font-size: 10px; /* Smaller font size for this card's description */
 }
 
 /* Show the card description on hover, with the same blue gradient as the header */
@@ -234,19 +244,7 @@ header p {
   pointer-events: auto;
 }
 
-/* Move the hover description lower for cards 2, 3, and 4 */
-.timeline-cards > div:nth-child(6) p {
-  height: 130px;          /* Shrink to cover image and some space below */
-}
-.timeline-cards > div:nth-child(2) p,
-.timeline-cards > div:nth-child(3) p,
-.timeline-cards > div:nth-child(4) p {
-  top: 70px; /* Move the hover box further down for these cards */
-    height: 120px;          /* Expand to cover image and some space below */
 
-
-
-}
 
 /* Prevent text from overflowing the card */
 .timeline-cards > div p,
