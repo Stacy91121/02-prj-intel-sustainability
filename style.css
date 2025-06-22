@@ -265,6 +265,17 @@ body > p {
   text-align: center;
 }
 
+/* Custom blue button for the subscribe form (matches timeline card blue) */
+.btn-intelblue {
+  background-color: #1976d2; /* Same blue as timeline headings */
+  color: #fff;               /* White text for contrast */
+  border: none;              /* Remove border */
+}
+.btn-intelblue:hover, .btn-intelblue:focus {
+  background-color: #1251a3; /* Slightly darker blue on hover/focus */
+  color: #fff;
+}
+
 /* Responsive: Stack timeline cards vertically and prevent overflow on small screens */
 @media (max-width: 1300px) {
   .timeline-cards {
